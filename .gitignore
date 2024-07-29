@@ -1,0 +1,3 @@
+# files to be ignored
+# jupyter notebook checkpoints
+.ipynb_checkpoints/
