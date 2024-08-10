@@ -19,14 +19,14 @@ The MySQL database is setup following the instructions from [Official Backend Gu
 - In scenario whereby `airflow db init` failed due to 'dag_id' and referenced column 'dag_id' in foreign key constraint 'task_fail_ti_fkey' are incompatible, it was resolved by removing the airflow database in MySQL and `airflow db init` again. 
 
 - Also added additional inbound rule at firewall 
->   Configure Windows Firewall: <br>
-    Open Windows Defender Firewall <br>
-    Click on "Advanced settings" <br>
-    Create a new Inbound Rule <br>
-    Choose "Port" and specify TCP port 3306 (default MySQL port) <br>
-    Allow the connection <br>
-    Apply to Domain, Private, and Public networks <br>
-    Name the rule (e.g., "MySQL for WSL")
+>   - Configure Windows Firewall: <br>
+    - Open Windows Defender Firewall <br>
+    - Click on "Advanced settings" <br>
+    - Create a new Inbound Rule <br>
+    - Choose "Port" and specify TCP port 3306 (default MySQL port) <br>
+    - Allow the connection <br>
+    - Apply to Domain, Private, and Public networks <br>
+    - Name the rule (e.g., "MySQL for WSL")
 
 # Successful Result
 Additional screenshot for running MultiDAG run recorded
