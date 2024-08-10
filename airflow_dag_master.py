@@ -31,6 +31,7 @@ with DAG(
     default_args = def_args, 
     schedule = None ,
     catchup=False,
+    tags =["self"],
     max_active_runs = 5) as dag:
     
     start = EmptyOperator (task_id = 'start' )
@@ -44,23 +45,23 @@ with DAG(
         wait_for_completion = True,
         poke_interval = 3)
 
-    # with TaskGroup('taskgroup_triggerdag', tooltip='taskgroup for triggerdag') as taskgrouptriggerdag:
-    #     a_dag = TriggerDagRunOperator ( 
-    #         task_id = 'dag_a',
-    #         trigger_dag_id = 'addition_dag_a',
-    #         logical_date = '{{ds}}',
-    #         reset_dag_run = True,
-    #         wait_for_completion = True,
-    #         poke_interval = 3)
+    with TaskGroup('taskgroup_triggerdag', tooltip='taskgroup for triggerdag') as taskgrouptriggerdag:
+        a_dag = TriggerDagRunOperator ( 
+            task_id = 'dag_a',
+            trigger_dag_id = 'addition_dag_a',
+            logical_date = '{{ds}}',
+            reset_dag_run = True,
+            wait_for_completion = True,
+            poke_interval = 3)
 
-    #     b_dag = TriggerDagRunOperator ( 
-    #         task_id = 'dag_b',
-    #         trigger_dag_id = 'addition_dag_b',
-    #         logical_date = '{{ds}}',
-    #         reset_dag_run = True,
-    #         wait_for_completion = True,
-    #         poke_interval = 3)
-    #     a_dag >> b_dag
+        b_dag = TriggerDagRunOperator ( 
+            task_id = 'dag_b',
+            trigger_dag_id = 'addition_dag_b',
+            logical_date = '{{ds}}',
+            reset_dag_run = True,
+            wait_for_completion = True,
+            poke_interval = 3)
+        a_dag >> b_dag
 
     c_dag = TriggerDagRunOperator ( 
         task_id = 'dag_c',
@@ -78,8 +79,8 @@ with DAG(
         wait_for_completion = True,
         poke_interval = 3)
         
-    # start >> [base,taskgrouptriggerdag]  >> c_dag >> d_dag >> end
-    start >> base  >> c_dag >> d_dag >> end
+    start >> [base,taskgrouptriggerdag]  >> c_dag >> d_dag >> end
+    # start >> base  >> c_dag >> d_dag >> end
 
 
 # In[ ]:

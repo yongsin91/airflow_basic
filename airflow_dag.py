@@ -18,9 +18,9 @@ import os
 # In[23]:
 
 
-root_folder_path = '/mnt/d/WSL/Ubuntu-22.04/yongsin91/Notebook'
+root_folder_path = '/mnt/d/WSL/Ubuntu-22.04/yongsin91/airflow_basic'
 os.chdir(root_folder_path)
-exec(open('./airflow_code.py').read())
+exec(open('airflow_code.py').read())
 
 
 # In[24]:
