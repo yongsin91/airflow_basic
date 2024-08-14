@@ -1,5 +1,5 @@
 # Basic Airflow 
-Credits to Airflow Tutorial [Sample Youtube Tutorial](https://www.youtube.com/watch?v=EySWDTZBZtM&list=PLMmVziys3riDnnI2qATwy6ObDRvZ546K3) . Basic example of setting up and using airflow is learning through this guide. 
+Credits to Airflow Tutorial [Sample Youtube Tutorial](https://www.youtube.com/watch?v=EySWDTZBZtM&list=PLMmVziys3riDnnI2qATwy6ObDRvZ546K3) . Basic example of setting up and using airflow is learnt through following this guide. 
 
 Basic Airflow functionalities tested are as follows :
 1. Basic Direct DAG run with DAG and Code in the same script
